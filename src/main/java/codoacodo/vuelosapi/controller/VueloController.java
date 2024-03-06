@@ -25,6 +25,11 @@ public class VueloController {
         return vueloService.vueloPorId(id);
     }
 
+    @GetMapping("/obtenerVueloPorOrigen/{origen}")
+    public List<Vuelo> getVueloPorOrigen(@PathVariable String origen) {
+        return vueloService.vuelosPorOrigen(origen);
+    }
+
     @PostMapping("/crearVuelo")
     public String crearVuelo(@RequestBody Vuelo vuelo) {
         return vueloService.crearVuelo(vuelo);
