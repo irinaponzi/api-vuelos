@@ -22,16 +22,11 @@ public class VueloService {
 
     public Vuelo vueloPorId(Long id) {
         Optional<Vuelo> vueloBuscado = vueloRepository.findById(id);
-        return vueloBuscado.orElseGet(null); // esto mejorar
+        return vueloBuscado.orElse(null);
     }
 
     public List<Vuelo> vuelosPorOrigen(String origen) {
-        List<Vuelo> vuelosBuscados = vueloRepository.findAllByOrigenIgnoreCase(origen);
-        if(!vuelosBuscados.isEmpty()) {
-            return vuelosBuscados;
-        } else {
-            return null; // esto mejorar
-        }
+        return vueloRepository.findAllByOrigenIgnoreCase(origen);
     }
 
     public String crearVuelo(Vuelo vuelo) {
